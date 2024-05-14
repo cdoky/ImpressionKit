@@ -52,7 +52,7 @@ extension UIView {
         set {
             let old = self.impressionState
             objc_setAssociatedObject(self, &stateKey, newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
-            if old != newValue {
+            if old.isImpressed != newValue.isImpressed {
                 guard let getCallback = self.getCallback() else {
                     assert(false)
                     return
